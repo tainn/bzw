@@ -33,7 +33,7 @@ bzw.emptyline(2)
 
 # Comments
 bzw.comment('This is a comment')
-bzw.comment('This comment has two empty lines afterwards', addline=True)
+bzw.comment('This comment has two new lines afterwards', addline=True)
 ```
 
 ## Logic
