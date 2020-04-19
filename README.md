@@ -49,5 +49,5 @@ for i in range(-4, 5):
     bzw.create('meshbox', position=(i * 40, i * 40, 0), rotation=i * 10, size=(10, 10, 10 * abs(i) + 10))
 ```
 
-### Output
+## Output
 The output of running such a script is a `my_map.bzw` file, created in the same directory as the executable, which includes the objects created during runtime.
