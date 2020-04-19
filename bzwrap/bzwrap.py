@@ -1,6 +1,3 @@
-# Bzwrap
-
-
 class Bzw:
     """Allows for creation of bzw objects and writing them to a file"""
 

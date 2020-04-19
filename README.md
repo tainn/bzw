@@ -20,7 +20,7 @@ bzw = bzwrap.Bzw('my_map')
 bzw.create('meshbox', position=(0, 0, 20), rotation=45, size=(10, 10, 10))
 bzw.create('meshpyr', position=(-20, -20, 30), size=(5, 5, 20), color=(0.2, 0.2, 0.2, 0.9))
 
-# Group definition
+# Group definitions
 bzw.define('tower')
 # ...
 bzw.define(end=True)
@@ -44,7 +44,10 @@ import bzwrap
 
 bzw = bzwrap.Bzw('my_map')
 
-# Creation of 9 objects under some key
+# Creation of nine objects under some key
 for i in range(-4, 5):
-    bzw.create('meshbox', position=(i * 20, i * 20, 0), rotation=i * 10, size=(10, 10, 10))
+    bzw.create('meshbox', position=(i * 40, i * 40, 0), rotation=i * 10, size=(10, 10, 10 * abs(i) + 10))
 ```
+
+### Output
+The output of running such a script is a `my_map.bzw` file, created in the same directory as the executable, which includes the objects created during runtime.
