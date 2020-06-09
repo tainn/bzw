@@ -7,7 +7,9 @@
 It features no hard restrictions, meaning that any object can be created with any attribute, even if the object itself does not exist. As such this package is merely an extension to creating maps by hand, making it more compact, better organized, and allowing the inclusion of logic while building bzw objects.
 
 ## Install
-`pip3 install --user git+git://github.com/tainn/bzwrap.git`
+Fetch the latest version of the package:
+
+`pip3 install --user git+git://github.com/tainn/bzwrap.git --upgrade`
 
 ## Usage
 ```py
