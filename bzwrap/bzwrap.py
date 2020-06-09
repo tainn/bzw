@@ -7,7 +7,7 @@ class Bzw:
     def __init__(self, filename: str) -> None:
         """Sets the name of the bzw file"""
 
-        self.filename = filename if filename.endswith('.bzw') else f'{filename}.bzw'
+        self.filename: str = filename if filename.endswith('.bzw') else f'{filename}.bzw'
 
     def create(self, ref: str, group: bool = False, **kwargs) -> None:
         """Creates and appends the specified object to a bzw file"""
