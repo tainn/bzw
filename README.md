@@ -9,7 +9,7 @@ It features no hard restrictions, meaning that any object can be created with an
 ## Install
 Fetch the latest version of the package:
 
-`pip3 install --user git+git://github.com/tainn/bzwrap.git --upgrade`
+`pip3 install --user --upgrade git+git://github.com/tainn/bzwrap.git`
 
 ## Usage
 ```py
