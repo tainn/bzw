@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='bzwrap',
-    version='1.0',
+    version='1.1',
     packages=['bzwrap'],
     url='https://github.com/tainn/bzwrap',
     license='GNU GPLv3',
