@@ -37,7 +37,7 @@ bzw.comment('This is a comment')
 bzw.comment('This comment has two new lines afterwards', addline=True)
 ```
 
-### Logic
+## Logic
 By utilizing some form of logic, one line doesn't have to equal just one object creation.
 
 ```py
@@ -50,5 +50,5 @@ for i in range(-4, 5):
     bzw.create('meshbox', position=(i * 40, i * 40, 0), rotation=i * 10, size=(10, 10, 10 * abs(i) + 10))
 ```
 
-### Output
+## Output
 The output of running such a script is a `my_map.bzw` file, created in the same directory as the executable, which features the objects created during runtime.
