@@ -1,12 +1,11 @@
 from setuptools import setup
 
 setup(
-    name='bzwrap',
+    name='bzw-wrapper',
     version='1.1',
     packages=['bzwrap'],
-    url='https://github.com/tainn/bzwrap',
+    url='https://github.com/tainn/bzw-wrapper',
     license='GNU GPLv3',
     author='tainn',
-    author_email='tainn@protonmail.com',
     description='Wrapper for bzw object creation and file population'
 )
