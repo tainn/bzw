@@ -2,10 +2,10 @@ from setuptools import setup
 
 setup(
     name='bzw-wrapper',
-    version='1.2',
+    version='1.3',
     packages=['bzwrap'],
     url='https://github.com/tainn/bzw-wrapper',
-    license='GNU GPLv3',
+    license='MIT',
     author='tainn',
     description='Wrapper for bzw object creation and file population'
 )
