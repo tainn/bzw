@@ -1,6 +1,9 @@
 # bzw-wrapper
 
-`bzwrap` is a package written in Python that allows for simple bzw object creation and file population.
+![Version](https://img.shields.io/badge/version-1.4-red)
+![Dependencies](https://img.shields.io/badge/dependencies-none-lightgrey)
+
+Package written in Python that allows for simple bzw object creation and file population.
 
 It features no hard restrictions, meaning that any object can be created with any attribute, even if the object itself
 does not exist. As such this package is merely an extension to creating maps by hand, making it more compact, better
