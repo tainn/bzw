@@ -1,6 +1,6 @@
 # bzw-wrapper
 
-![Version](https://img.shields.io/badge/version-1.4-red)
+[![Version](https://img.shields.io/badge/version-1.4-red)](https://github.com/tainn/bzw-wrapper/blob/master/setup.py#L5)
 ![Dependencies](https://img.shields.io/badge/dependencies-none-lightgrey)
 
 Package written in Python that allows for simple bzw object creation and file population.
