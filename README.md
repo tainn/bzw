@@ -31,7 +31,7 @@ bzw.create('meshpyr', position=(-20, -20, 30), size=(5, 5, 20), color=(0.2, 0.2,
 
 # Group definitions
 bzw.define('tower')
-# ...
+# ... some object creations...
 bzw.define(end=True)
 
 # Include
