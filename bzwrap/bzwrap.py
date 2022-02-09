@@ -2,8 +2,7 @@ import os
 
 
 def set_filename(filename: str, overwrite: bool = False) -> str:
-    """
-    Finds and sets the name of the bzw file
+    """Finds and sets the name of the bzw file.
 
     :param filename: desired name of the bzw file
     :param overwrite: optional kwarg whether to overwrite an existing file or not
@@ -29,13 +28,10 @@ def set_filename(filename: str, overwrite: bool = False) -> str:
 
 
 class Bzw:
-    """
-    Allows for creation of bzw objects and writing them to a file
-    """
+    """Allows for creation of bzw objects and writing them to a file."""
 
     def __init__(self, filename: str, overwrite: bool = False) -> None:
-        """
-        Sets the name of the bzw file
+        """Sets the name of the bzw file.
 
         :param filename: desired name of the bzw file
         :param overwrite: optional kwarg whether to overwrite an existing file or not
@@ -43,8 +39,7 @@ class Bzw:
         self.filename: str = set_filename(filename=filename, overwrite=overwrite)
 
     def create(self, ref: str, group: bool = False, **kwargs) -> None:
-        """
-        Creates and appends the specified object to a bzw file
+        """Creates and appends the specified object to a bzw file.
 
         :param ref: object reference
         :param group: bool whether the object is a group or not
@@ -63,8 +58,7 @@ class Bzw:
             f.write('end\n\n')
 
     def define(self, name: str = None, end: bool = False) -> None:
-        """
-        Creates an opening or closing line of a group definition
+        """Creates an opening or closing line of a group definition.
 
         :param name: name of the definition object
         :param end: bool whether it is the end of the definition or not
@@ -73,8 +67,7 @@ class Bzw:
             f.write(f'define {name}\n\n' if not end else 'enddef\n\n')
 
     def include(self, path: str) -> None:
-        """
-        Creates an include line
+        """Creates an include line.
 
         :param path: path to the included file
         """
@@ -82,8 +75,7 @@ class Bzw:
             f.write(f'include {path}\n\n')
 
     def emptyline(self, amount: int = 1) -> None:
-        """
-        Creates the specified amount of empty lines
+        """Creates the specified amount of empty lines.
 
         :param amount: amount of empty lines to create
         """
@@ -91,8 +83,7 @@ class Bzw:
             f.write('\n' * amount)
 
     def comment(self, content: str, addline: bool = False) -> None:
-        """
-        Creates a comment with the passed content
+        """Creates a comment with the passed content.
 
         :param content: content of the comment
         :param addline: bool whether to add an extra newline or not
