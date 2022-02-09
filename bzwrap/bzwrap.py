@@ -4,6 +4,7 @@ import os
 def set_filename(filename: str, overwrite: bool = False) -> str:
     """
     Finds and sets the name of the bzw file
+
     :param filename: desired name of the bzw file
     :param overwrite: optional kwarg whether to overwrite an existing file or not
     :return: the end filename that is applied
@@ -28,11 +29,14 @@ def set_filename(filename: str, overwrite: bool = False) -> str:
 
 
 class Bzw:
-    """Allows for creation of bzw objects and writing them to a file"""
+    """
+    Allows for creation of bzw objects and writing them to a file
+    """
 
     def __init__(self, filename: str, overwrite: bool = False) -> None:
         """
         Sets the name of the bzw file
+
         :param filename: desired name of the bzw file
         :param overwrite: optional kwarg whether to overwrite an existing file or not
         """
@@ -41,6 +45,7 @@ class Bzw:
     def create(self, ref: str, group: bool = False, **kwargs) -> None:
         """
         Creates and appends the specified object to a bzw file
+
         :param ref: object reference
         :param group: bool whether the object is a group or not
         :param kwargs: object attributes and their values
@@ -60,6 +65,7 @@ class Bzw:
     def define(self, name: str = None, end: bool = False) -> None:
         """
         Creates an opening or closing line of a group definition
+
         :param name: name of the definition object
         :param end: bool whether it is the end of the definition or not
         """
@@ -69,6 +75,7 @@ class Bzw:
     def include(self, path: str) -> None:
         """
         Creates an include line
+
         :param path: path to the included file
         """
         with open(self.filename, 'a') as f:
@@ -77,6 +84,7 @@ class Bzw:
     def emptyline(self, amount: int = 1) -> None:
         """
         Creates the specified amount of empty lines
+
         :param amount: amount of empty lines to create
         """
         with open(self.filename, 'a') as f:
@@ -85,6 +93,7 @@ class Bzw:
     def comment(self, content: str, addline: bool = False) -> None:
         """
         Creates a comment with the passed content
+
         :param content: content of the comment
         :param addline: bool whether to add an extra newline or not
         """
