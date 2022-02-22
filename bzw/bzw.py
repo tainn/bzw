@@ -1,32 +1,6 @@
 import os
 
 
-def set_filename(filename: str, overwrite: bool = False) -> str:
-    """Finds and sets the name of the bzw file.
-
-    :param filename: desired name of the bzw file
-    :param overwrite: optional kwarg whether to overwrite an existing file or not
-    :return: the end filename that is applied
-    """
-    initial_candidate: str = filename if filename.endswith('.bzw') else f'{filename}.bzw'
-    candidate: str = initial_candidate
-    postfix_increment: int = 1
-
-    while True:
-        if os.path.isfile(candidate) and not overwrite:
-            candidate: str = f'{initial_candidate.split(".bzw")[0]}-{str(postfix_increment).zfill(2)}.bzw'
-            postfix_increment += 1
-
-        elif os.path.isfile(candidate) and overwrite:
-            os.remove(candidate)
-            break
-
-        else:
-            break
-
-    return candidate
-
-
 class Bzw:
     """Allows for creation of bzw objects and writing them to a file."""
 
@@ -90,3 +64,29 @@ class Bzw:
         """
         with open(self.filename, 'a') as f:
             f.write(f'# {content}\n' if not addline else f'# {content}\n\n')
+
+
+def set_filename(filename: str, overwrite: bool = False) -> str:
+    """Finds and sets the name of the bzw file.
+
+    :param filename: desired name of the bzw file
+    :param overwrite: optional kwarg whether to overwrite an existing file or not
+    :return: the end filename that is applied
+    """
+    initial_candidate: str = filename if filename.endswith('.bzw') else f'{filename}.bzw'
+    candidate: str = initial_candidate
+    postfix_increment: int = 1
+
+    while True:
+        if os.path.isfile(candidate) and not overwrite:
+            candidate: str = f'{initial_candidate.split(".bzw")[0]}-{str(postfix_increment).zfill(2)}.bzw'
+            postfix_increment += 1
+
+        elif os.path.isfile(candidate) and overwrite:
+            os.remove(candidate)
+            break
+
+        else:
+            break
+
+    return candidate

@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='bzw-wrapper',
     version='1.5',
-    packages=['bzwrap'],
+    packages=['bzw'],
     url='https://github.com/tainn/bzw-wrapper',
     license='MIT',
     author='tainn',
