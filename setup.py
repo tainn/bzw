@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='bzw-wrapper',
-    version='1.5',
+    version='2.0',
     packages=['bzw'],
     url='https://github.com/tainn/bzw-wrapper',
     license='MIT',
