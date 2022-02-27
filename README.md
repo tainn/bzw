@@ -2,7 +2,6 @@
 
 ![package_version](https://img.shields.io/badge/package-2.0-b0c9ff)
 ![python_version](https://img.shields.io/badge/python-3.6-b0c9ff)
-![dependencies](https://img.shields.io/badge/dependencies-none-e0b0ff)
 
 A package written in Python that allows for simple bzw object creation and file population.
 
