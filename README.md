@@ -48,6 +48,9 @@ world.comment('... this one has two new lines afterwards', addline=True)
 
 ### Overwrite
 
+The output of running such a script is a `my_map.bzw` file, created in the same directory as the executable, which
+features the objects created during runtime.
+
 If `overwrite=True` is passed during object creation and a file with that name already exists in the working directory,
 the file is overwritten. Otherwise, a sequential number is appended, e.g. `my_map-02.bzw`, which is also the default
 behavior.
@@ -83,8 +86,3 @@ for i in range(-4, 5):
         size=(10, 10, 10 * abs(i) + 10)
     )
 ```
-
-## Output
-
-The output of running such a script is a `my_map.bzw` file, created in the same directory as the executable, which
-features the objects created during runtime.
