@@ -8,8 +8,8 @@ class Bzw:
         """Sets the name of the bzw file.
 
         :param filename: desired name of the bzw file
-        :param overwrite: optional kwarg whether to overwrite an existing file or not
-        """
+        :param overwrite: optional kwarg whether to overwrite an existing file or not"""
+
         self.filename: str = set_filename(filename=filename, overwrite=overwrite)
 
     def create(self, ref: str, group: bool = False, **kwargs) -> None:
@@ -17,8 +17,8 @@ class Bzw:
 
         :param ref: object reference
         :param group: bool whether the object is a group or not
-        :param kwargs: object attributes and their values
-        """
+        :param kwargs: object attributes and their values"""
+
         with open(self.filename, 'a') as f:
             f.write(f'{ref}\n' if not group else f'group {ref}\n')
 
@@ -27,7 +27,7 @@ class Bzw:
                 if type(kwargs[attr]) is list or type(kwargs[attr]) is tuple:
                     kwargs[attr] = ' '.join(map(str, kwargs[attr]))
 
-                f.write(f'{attr} {kwargs[attr]}\n')
+                f.write(f'{attr.strip("_")} {kwargs[attr]}\n')
 
             f.write('end\n\n')
 
@@ -35,24 +35,24 @@ class Bzw:
         """Creates an opening or closing line of a group definition.
 
         :param name: name of the definition object
-        :param end: bool whether it is the end of the definition or not
-        """
+        :param end: bool whether it is the end of the definition or not"""
+
         with open(self.filename, 'a') as f:
             f.write(f'define {name}\n\n' if not end else 'enddef\n\n')
 
     def include(self, path: str) -> None:
         """Creates an include line.
 
-        :param path: path to the included file
-        """
+        :param path: path to the included file"""
+
         with open(self.filename, 'a') as f:
             f.write(f'include {path}\n\n')
 
     def emptyline(self, amount: int = 1) -> None:
         """Creates the specified amount of empty lines.
 
-        :param amount: amount of empty lines to create
-        """
+        :param amount: amount of empty lines to create"""
+
         with open(self.filename, 'a') as f:
             f.write('\n' * amount)
 
@@ -60,8 +60,8 @@ class Bzw:
         """Creates a comment with the passed content.
 
         :param content: content of the comment
-        :param addline: bool whether to add an extra newline or not
-        """
+        :param addline: bool whether to add an extra newline or not"""
+
         with open(self.filename, 'a') as f:
             f.write(f'# {content}\n' if not addline else f'# {content}\n\n')
 
@@ -71,8 +71,8 @@ def set_filename(filename: str, overwrite: bool = False) -> str:
 
     :param filename: desired name of the bzw file
     :param overwrite: optional kwarg whether to overwrite an existing file or not
-    :return: the end filename that is applied
-    """
+    :return: the end filename that is applied"""
+
     initial_candidate: str = filename if filename.endswith('.bzw') else f'{filename}.bzw'
     candidate: str = initial_candidate
     postfix_increment: int = 1
