@@ -46,6 +46,25 @@ world.comment('This is a comment...')
 world.comment('... this one has two new lines afterwards', addline=True)
 ```
 
+### Overwrite
+
+If `overwrite=True` is passed during object creation and a file with that name already exists in the working directory,
+the file is overwritten. Otherwise, a sequential number is appended, e.g. `my_map-02.bzw`, which is also the default
+behavior.
+
+### Reserved keywords
+
+When creating objects whose fields are named the same as
+Python's [reserved keywords](https://docs.python.org/3/reference/lexical_analysis.html#keywords), we can add a trailing
+underscore to the passed kwarg, which is then appropriately parsed during runtime.
+
+```py
+world.create('link', from_='east:f', to='west:b')
+```
+
+In the example above, the `from_` kwarg is transformed into the `from` field, omitting the underscore. Note that all
+leading and trailing underscores will be ignored in a similar fashion.
+
 ## Logic
 
 By utilizing some form of logic, one line doesn't have to equal just one object creation.
@@ -69,7 +88,3 @@ for i in range(-4, 5):
 
 The output of running such a script is a `my_map.bzw` file, created in the same directory as the executable, which
 features the objects created during runtime.
-
-If `overwrite=True` is passed during object creation and a file with that name already exists in the working directory,
-the file is overwritten. Otherwise, a sequential number is appended, e.g. `my_map-02.bzw`, which is also the default
-behavior.
