@@ -1,7 +1,5 @@
 # bzw-wrapper
 
-![package_version](https://img.shields.io/badge/package-2.1-b0c9ff)
-![python_version](https://img.shields.io/badge/python-3.6-b0c9ff)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 A package written in Python that allows for simple bzw object creation and file population.
@@ -24,26 +22,26 @@ pip3 install --user --upgrade git+git://github.com/tainn/bzw-wrapper.git
 import bzw
 
 # Set a filename
-world = bzw.Bzw('my_map', overwrite=False)
+world = bzw.Bzw("my_map")
 
 # Create objects
-world.create('meshbox', position=(0, 0, 20), rotation=45, size=(10, 10, 10))
-world.create('meshpyr', position=(-20, -20, 30), size=(5, 5, 20), color=(0.2, 0.2, 0.2, 0.9))
+world.create("meshbox", position=(0, 0, 20), rotation=45, size=(10, 10, 10))
+world.create("meshpyr", position=(-20, -20, 30), size=(5, 5, 20), color=(0.2, 0.2, 0.2, 0.9))
 
 # Group definitions
-world.define('tower')
+world.define("tower")
 # ... some object creations...
 world.define(end=True)
 
 # Include
-world.include('/path/to/file.bzw')
+world.include("/path/to/file.bzw")
 
 # Empty lines
 world.emptyline(2)
 
 # Comments
-world.comment('This is a comment...')
-world.comment('... this one has two new lines afterwards', addline=True)
+world.comment("This is a comment...")
+world.comment("... this one has two new lines afterwards", addline=True)
 ```
 
 ### Overwrite
@@ -62,7 +60,7 @@ Python's [reserved keywords](https://docs.python.org/3/reference/lexical_analysi
 underscore to the passed kwarg, which is then appropriately parsed during runtime.
 
 ```py
-world.create('link', from_='east:f', to='west:b')
+world.create("link", from_="east:f", to="west:b")
 ```
 
 In the example above, the `from_` kwarg is transformed into the `from` field, omitting the underscore. Note that all
@@ -75,12 +73,12 @@ By utilizing some form of logic, one line doesn't have to equal just one object 
 ```py
 import bzw
 
-world = bzw.Bzw('my_map')
+world = bzw.Bzw("my_map")
 
 # Creation of nine objects under some key
 for i in range(-4, 5):
     world.create(
-        'meshbox',
+        "meshbox",
         position=(i * 40, i * 40, 0),
         rotation=i * 10,
         size=(10, 10, 10 * abs(i) + 10)
