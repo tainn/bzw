@@ -13,7 +13,7 @@ organized, and allowing the inclusion of logic while building bzw objects.
 Fetch the latest version of the package
 
 ```sh
-pip3 install --user --upgrade git+git://github.com/tainn/bzw-wrapper.git
+pip3 install --user --upgrade git+https://github.com/tainn/bzw-wrapper.git
 ```
 
 ## Usage
