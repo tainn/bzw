@@ -107,7 +107,7 @@ world.comment("... this one has two new lines afterwards", addline=True)
 ## LazyBzw
 
 Functions similarly to the [Bzw](#Bzw) class, but with lazy loading instead of eager loading. Additionally, requires the
-dump of the in-memory string content to perform a single write IO file operation.
+dump of the in-memory string content to perform a single write IO operation, usually at the very end.
 
 ```py
 world.dump()
