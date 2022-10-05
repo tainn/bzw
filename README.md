@@ -16,42 +16,100 @@ Fetch the latest version of the package
 pip3 install --user --upgrade git+https://github.com/tainn/bzw-wrapper.git
 ```
 
-## Usage
+## Bzw
+
+Eager loading approach towards file population, with each bzw objects being written into the end file as you go. This
+omits the need to dump the incremental build at the end, as well as persists the built progress in case of an error. The
+trade-off is slightly worse performance, should it be relevant.
+
+### Import
+
+Import the `bzw` module:
 
 ```py
 import bzw
+```
 
-# Set a filename
-world = bzw.Bzw("my_map")
+### Instantiation
 
-# Create objects
-world.create("meshbox", position=(0, 0, 20), rotation=45, size=(10, 10, 10))
-world.create("meshpyr", position=(-20, -20, 30), size=(5, 5, 20), color=(0.2, 0.2, 0.2, 0.9))
+Create a new object via the `Bzw` class. The constructor takes the following parameters:
 
-# Group definitions
+- `filename` (required): desired bzw filename
+- `overwrite` (optional): if set to `True`, overwrite bzw files with the same name
+
+```py
+world = bzw.Bzw("my_map", overwrite=False)
+```
+
+### Object creation
+
+The core method of creation is the `create` method. Pass in the type of the object, followed by kwarg key-value pairs
+for the value fields. The values can be passed as strings or iterables, such as lists or tuples.
+
+```py
+world.create(
+    "meshbox",
+    position=(0, 0, 20),
+    rotation=45,
+    size=(10, 10, 10),
+)
+
+world.create(
+    "meshpyr",
+    position=(-20, -20, 30),
+    size=(5, 5, 20),
+    color=(0.2, 0.2, 0.2, 0.9),
+)
+```
+
+### Group definitions
+
+Groups can be defined and definitions closed via the `define` method. The method only has two forms: the definition
+which takes a string name, as well as the definition closure which requires the `end` kwarg switch being set to `True`.
+
+```py
 world.define("tower")
 # ... some object creations...
 world.define(end=True)
+```
 
-# Include
+### Include
+
+External bzw file contents can be included via the `include` method.
+
+```py
 world.include("/path/to/file.bzw")
+```
 
-# Empty lines
+### Empty lines
+
+In case we want to make the end bzw file more presentable and humanly readable, it is viable to insert empty lines in
+between meaningful units. The `emptyline` method allows us to do so, accepting the number of empty lines to create and
+defaulting to 1.
+
+```py
 world.emptyline(2)
+```
 
-# Comments
+### Comments
+
+Like with the empty lines, comments via the `comment` method allow us to annotate our bzw file with humanly readable
+text or other content that is later ignored during world generation. If an optional `addline` kwarg is passed as `True`,
+an additional line is created at the end. For more new lines than that, combine this with the above `emptyline` method.
+
+```py
 world.comment("This is a comment...")
 world.comment("... this one has two new lines afterwards", addline=True)
 ```
 
-### Overwrite
+## LazyBzw
 
-The output of running such a script is a `my_map.bzw` file, created in the same directory as the executable, which
-features the objects created during runtime.
+*(in the works...)*
 
-If `overwrite=True` is passed during object creation and a file with that name already exists in the working directory,
-the file is overwritten. Otherwise, a sequential number is appended, e.g. `my_map-02.bzw`, which is also the default
-behavior.
+Functions much like the [Bzw](#Bzw) class, but with lazy instead of eager loading. See above for a quick summary of
+benefits and drawbacks.
+
+## Misc
 
 ### Reserved keywords
 
@@ -59,23 +117,19 @@ When creating objects whose fields are named the same as
 Python's [reserved keywords](https://docs.python.org/3/reference/lexical_analysis.html#keywords), we can add a trailing
 underscore to the passed kwarg, which is then appropriately parsed during runtime.
 
+In the example below, the `from_` kwarg is transformed into the `from` field, omitting the underscore. Note that all
+leading and trailing underscores will be ignored in a similar fashion.
+
 ```py
 world.create("link", from_="east:f", to="west:b")
 ```
 
-In the example above, the `from_` kwarg is transformed into the `from` field, omitting the underscore. Note that all
-leading and trailing underscores will be ignored in a similar fashion.
+### Logic
 
-## Logic
-
-By utilizing some form of logic, one line doesn't have to equal just one object creation.
+By utilizing some form of logic, one line doesn't have to equal just one object creation. The below example creates nine
+different objects under some key.
 
 ```py
-import bzw
-
-world = bzw.Bzw("my_map")
-
-# Creation of nine objects under some key
 for i in range(-4, 5):
     world.create(
         "meshbox",
