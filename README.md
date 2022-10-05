@@ -43,22 +43,24 @@ world = bzw.Bzw("my-map", overwrite=False)
 
 ### Object creation
 
-The core of creation is the `create` method. Pass in the type of the object, followed by kwarg key-value pairs for the
-value fields. The values can be passed as strings, lists or tuples.
+The core of creation is the `create` method. Pass in the type of the object, followed by key-value pairs for the value
+fields. The values can be passed as strings, lists or tuples. If creating a group instance, the `group` parameter has to
+be passed as `True`.
 
 ```py
 world.create(
     "meshbox",
     position=(0, 0, 20),
     rotation=45,
-    size=(10, 10, 10)
+    size=(10, 10, 10),
+    color=(0.2, 0.2, 0.2, 0.9)
 )
 
 world.create(
-    "meshpyr",
-    position=(-20, -20, 30),
-    size=(5, 5, 20),
-    color=(0.2, 0.2, 0.2, 0.9)
+    "tower",
+    shift=(-20, -20, 30),
+    drivethrough=1,
+    group=True
 )
 ```
 
@@ -104,10 +106,12 @@ world.comment("... this one has two new lines afterwards", addline=True)
 
 ## LazyBzw
 
-*(in the works...)*
+Functions similarly to the [Bzw](#Bzw) class, but with lazy loading instead of eager loading. Additionally, requires the
+dump of the in-memory string content to perform a single write IO file operation.
 
-Functions much like the [Bzw](#Bzw) class, but with lazy instead of eager loading. See above for a quick summary of
-benefits and drawbacks.
+```py
+world.dump()
+```
 
 ## Misc
 
