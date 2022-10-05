@@ -18,13 +18,13 @@ pip3 install --user --upgrade git+https://github.com/tainn/bzw-wrapper.git
 
 ## Bzw
 
-Eager loading approach towards file population, with each bzw objects being written into the end file as you go. This
-omits the need to dump the incremental build at the end, as well as persists the built progress in case of an error. The
-trade-off is slightly worse performance, should it be relevant.
+Eager loading approach towards file population, with each bzw object being written into the end file as you go. This
+omits the need to dump the incremental build at the end, as well as persists the built progress in case of a runtime
+error. The trade-off is slightly worse performance due to repeating IO operations.
 
 ### Import
 
-Import the `bzw` module:
+Import the `bzw` module.
 
 ```py
 import bzw
@@ -38,27 +38,27 @@ Create a new object via the `Bzw` class. The constructor takes the following par
 - `overwrite` (optional): if set to `True`, overwrite bzw files with the same name
 
 ```py
-world = bzw.Bzw("my_map", overwrite=False)
+world = bzw.Bzw("my-map", overwrite=False)
 ```
 
 ### Object creation
 
-The core method of creation is the `create` method. Pass in the type of the object, followed by kwarg key-value pairs
-for the value fields. The values can be passed as strings or iterables, such as lists or tuples.
+The core of creation is the `create` method. Pass in the type of the object, followed by kwarg key-value pairs for the
+value fields. The values can be passed as strings, lists or tuples.
 
 ```py
 world.create(
     "meshbox",
     position=(0, 0, 20),
     rotation=45,
-    size=(10, 10, 10),
+    size=(10, 10, 10)
 )
 
 world.create(
     "meshpyr",
     position=(-20, -20, 30),
     size=(5, 5, 20),
-    color=(0.2, 0.2, 0.2, 0.9),
+    color=(0.2, 0.2, 0.2, 0.9)
 )
 ```
 
@@ -75,7 +75,7 @@ world.define(end=True)
 
 ### Include
 
-External bzw file contents can be included via the `include` method.
+External bzw files can be included via the `include` method.
 
 ```py
 world.include("/path/to/file.bzw")
