@@ -71,7 +71,9 @@ which takes a string name, as well as the definition closure which requires the 
 
 ```py
 world.define("tower")
+
 # ... some object creations...
+
 world.define(end=True)
 ```
 
@@ -110,6 +112,10 @@ Functions similarly to the [Bzw](#Bzw) class, but with lazy loading instead of e
 dump of the in-memory string content to perform a single write IO operation, usually at the very end.
 
 ```py
+world = bzw.LazyBzw("my-map")
+
+# ... some object manipulation...
+
 world.dump()
 ```
 
