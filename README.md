@@ -2,7 +2,7 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-A package written in Python that allows for simple bzw object creation and file population.
+A package that allows for simple bzw object creation and file population.
 
 It features no hard restrictions, meaning that any object can be created with any attribute, even if the object itself
 does not exist. As such this package is merely an extension to creating maps by hand, making it more compact, better
