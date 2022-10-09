@@ -1,10 +1,10 @@
 from setuptools import setup
 
 setup(
-    name="bzw-wrapper",
+    name="bzw",
     version="2.4",
     packages=["bzw"],
-    url="https://github.com/tainn/bzw-wrapper",
+    url="https://github.com/tainn/bzw",
     license="MIT",
     author="tainn",
     description="Wrapper for bzw object creation and file population",

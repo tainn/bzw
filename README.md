@@ -1,4 +1,4 @@
-# bzw-wrapper
+# bzw
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
@@ -13,7 +13,7 @@ organized, and allowing the inclusion of logic while building bzw objects.
 Fetch the latest version of the package
 
 ```sh
-pip3 install --user --upgrade git+https://github.com/tainn/bzw-wrapper.git
+pip3 install --upgrade git+https://github.com/tainn/bzw.git
 ```
 
 ## Bzw
