@@ -20,7 +20,7 @@ pip3 install --upgrade git+https://github.com/tainn/bzw.git
 
 Eager loading approach towards file population, with each bzw object being written into the end file as you go. This
 omits the need to dump the incremental build at the end, as well as persists the built progress in case of a runtime
-error. The trade-off is slightly worse performance due to repeating IO operations. (Also see [LazyBzw](#LazyBzw))
+error. The trade-off is slightly worse performance due to repeating IO operations. Also see the [LazyBzw](#LazyBzw).
 
 ### Import
 
