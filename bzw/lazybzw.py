@@ -13,16 +13,13 @@ class LazyBzw:
             self.content += f"group {typ}\n"
 
         for attr in kwargs:
-            # Non-array (fixed depth 0)
             if isinstance(kwargs[attr], (str, int, float)):
                 self.content += f"{attr.strip('_')} {kwargs[attr]}\n"
 
-            # Array of non-arrays (fixed depth 1)
             elif not any(isinstance(entry, (list, tuple, dict)) for entry in kwargs[attr]):
                 kwargs[attr]: str = utils.deep_type_cast(core=kwargs, part=attr, name=attr)
                 self.content += f"{attr.strip('_')} {kwargs[attr]}\n"
 
-            # Array of arrays (max depth 2)
             else:
                 for idx, _ in enumerate(kwargs[attr]):
                     partial: str = utils.deep_type_cast(core=kwargs[attr], part=idx, name=attr)

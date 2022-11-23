@@ -22,14 +22,6 @@ Eager loading approach towards file population, with each bzw object being writt
 omits the need to dump the incremental build at the end, as well as persists the built progress in case of a runtime
 error. The trade-off is slightly worse performance due to repeating IO operations. Also see the [LazyBzw](#LazyBzw).
 
-### Import
-
-Import the `bzw` module.
-
-```py
-import bzw
-```
-
 ### Instantiation
 
 Create a new object via the `Bzw` class. The constructor takes the following parameters:
@@ -38,6 +30,8 @@ Create a new object via the `Bzw` class. The constructor takes the following par
 - `overwrite` (optional): if set to `True`, overwrite bzw files with the same name
 
 ```py
+import bzw
+
 world = bzw.Bzw("my-map", overwrite=False)
 ```
 
@@ -136,7 +130,7 @@ world.create("link", from_="east:f", to="west:b")
 
 ### Logic
 
-By utilizing some form of logic, one line doesn't have to equal just one object creation. The below example creates nine
+By utilizing some form of logic, one line doesn't have to equal just one object creation. The example below creates nine
 different objects under some key.
 
 ```py
