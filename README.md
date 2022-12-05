@@ -65,6 +65,8 @@ Like with the empty lines, comments via the `comment` method allow us to annotat
 text or other content that is later ignored during world generation. If an optional `addline` kwarg is passed as `True`,
 an additional line is created at the end. For more new lines than that, combine this with the above `emptyline` method.
 
+## Miscellaneous
+
 ### Reserved keywords
 
 When creating objects whose fields are named the same as
@@ -76,10 +78,12 @@ that all leading and trailing underscores will be ignored in a similar fashion.
 
 ### Logic
 
-By utilizing some form of logic, one line doesn't have to equal just one object creation. The example [below](#Snippet)
-creates nine different objects under some key.
+By utilizing some form of logic, one line doesn't have to equal just one object creation. The example below creates nine
+different objects under some key.
 
 ## Snippet
+
+### Usage
 
 ```py
 import bzw
@@ -120,7 +124,11 @@ world.comment(
     "This one has two new lines afterwards",
     addline=True
 )
+```
 
+### Miscellaneous
+
+```py
 # Reserved keywords
 world.create("link", from_="east:f", to="west:b")
 
