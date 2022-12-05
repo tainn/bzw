@@ -18,7 +18,7 @@ pip3 install --upgrade git+https://github.com/tainn/bzw.git
 
 ## Usage
 
-Code snippet with all mentioned segments is present at the [very end](#Snippet), with each segment starting as `# >>`.
+Code snippet with all mentioned segments is present at the [very end](#Snippet).
 
 ### Bzw
 
@@ -84,10 +84,10 @@ creates nine different objects under some key.
 ```py
 import bzw
 
-# >> Instantiation
+# Instantiation
 world = bzw.Bzw("my-map")
 
-# >> Object creation
+# Object creation
 world.create(
     "meshbox",
     position=(0, 0, 20),
@@ -103,28 +103,28 @@ world.create(
     group=True
 )
 
-# >> Group definitions
+# Group definitions
 world.define("tower")
-# ... some object creations...
+# ...
 world.define(end=True)
 
-# >> Include
+# Include
 world.include("/path/to/file.bzw")
 
-# >> Empty lines
+# Empty lines
 world.emptyline(2)
 
-# >> Comments
+# Comments
 world.comment("This is a comment")
 world.comment(
     "This one has two new lines afterwards",
     addline=True
 )
 
-# >> Reserved keywords
+# Reserved keywords
 world.create("link", from_="east:f", to="west:b")
 
-# >> Logic
+# Logic
 for i in range(-4, 5):
     world.create(
         "meshbox",
