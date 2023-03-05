@@ -1,5 +1,4 @@
 import os
-from typing import Union
 
 
 def set_filename(filename: str, overwrite: bool = False) -> str:
@@ -20,20 +19,20 @@ def set_filename(filename: str, overwrite: bool = False) -> str:
     return name
 
 
-def deep_type_cast(core: Union[dict, list, tuple], part: Union[str, int], name: str) -> str:
+def deep_type_cast(core: dict | list | tuple, part: str | int, name: str) -> str:
     core[part]: str = array_check_form(core=core, part=part)
     core[part]: str = dict_check_form(core=core, part=part, name=name)
     return core[part]
 
 
-def array_check_form(core: Union[dict, list, tuple], part: Union[str, int]) -> str:
+def array_check_form(core: dict | list | tuple, part: str | int) -> str:
     if not isinstance(core[part], (list, tuple)):
         return core[part]
 
     return " ".join(map(str, core[part]))
 
 
-def dict_check_form(core: Union[dict, list, tuple], part: Union[str, int], name: str) -> str:
+def dict_check_form(core: dict | list | tuple, part: str | int, name: str) -> str:
     if not isinstance(core[part], dict):
         return core[part]
 
