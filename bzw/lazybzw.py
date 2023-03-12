@@ -1,4 +1,4 @@
-import utils
+from bzw import utils
 
 
 class LazyBzw:
