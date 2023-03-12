@@ -2,7 +2,7 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-A package that allows for simple bzw object creation and file population.
+A package that allows for simple [bzw](https://wiki.bzflag.org/BZW) object creation and file population.
 
 It features no hard restrictions, meaning that any object can be created with any attribute, even if the object itself
 does not exist. As such this package is merely an extension to creating maps by hand, making it more compact, better
@@ -18,7 +18,7 @@ pip3 install --upgrade git+https://github.com/tainn/bzw.git
 
 ## Quick reference
 
-A heads-on reference of available methods and their usability.
+A hands-on reference of available methods and their usability.
 
 ```py
 import bzw
@@ -34,15 +34,10 @@ world.create(
     size=(10, 10, 10),
     color=(0.2, 0.2, 0.2, 0.9)
 )
-world.create(
-    "tower",
-    shift=(-20, -20, 30),
-    drivethrough=1,
-    group=True
-)
 
 # Group definitions :: define
 world.define("tower")
+world.create("...")
 world.define(end=True)
 
 # Include :: include
@@ -53,10 +48,8 @@ world.emptyline(2)
 
 # Comments :: comment
 world.comment("This is a comment")
-world.comment(
-    "This one has two new lines afterwards",
-    addline=True
-)
+world.comment("Two new lines afterwards", addline=True)
+
 ```
 
 ## Eager vs lazy
