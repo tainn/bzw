@@ -1,6 +1,6 @@
 # bzw
 
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Code style: black](https://img.shields.io/badge/style-black-000000.svg)](https://github.com/psf/black)
 
 A package that allows for simple [bzw](https://wiki.bzflag.org/BZW) object creation and file population.
 
