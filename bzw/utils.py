@@ -1,4 +1,5 @@
 import os
+from typing import Any
 
 
 def set_filename(filename: str, overwrite: bool = False) -> str:
@@ -8,7 +9,7 @@ def set_filename(filename: str, overwrite: bool = False) -> str:
 
     while True:
         if os.path.isfile(name) and not overwrite:
-            name: str = f'{init_name.split(".bzw")[0]}-{str(postfix_incr).zfill(2)}.bzw'
+            name = f'{init_name.split(".bzw")[0]}-{str(postfix_incr).zfill(2)}.bzw'
             postfix_incr += 1
         elif os.path.isfile(name) and overwrite:
             os.remove(name)
@@ -19,20 +20,20 @@ def set_filename(filename: str, overwrite: bool = False) -> str:
     return name
 
 
-def deep_type_cast(core: dict | list | tuple, part: str | int, name: str) -> str:
-    core[part]: str = array_check_form(core=core, part=part)
-    core[part]: str = dict_check_form(core=core, part=part, name=name)
+def deep_type_cast(core: Any, part: str | int, name: str) -> str | Any:
+    core[part] = array_check_form(core=core, part=part)
+    core[part] = dict_check_form(core=core, part=part, name=name)
     return core[part]
 
 
-def array_check_form(core: dict | list | tuple, part: str | int) -> str:
+def array_check_form(core: Any, part: str | int) -> str | Any:
     if not isinstance(core[part], (list, tuple)):
         return core[part]
 
     return " ".join(map(str, core[part]))
 
 
-def dict_check_form(core: dict | list | tuple, part: str | int, name: str) -> str:
+def dict_check_form(core: Any, part: str | int, name: str) -> str | Any:
     if not isinstance(core[part], dict):
         return core[part]
 

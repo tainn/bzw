@@ -1,3 +1,5 @@
+from typing import Any
+
 from bzw import utils
 
 
@@ -6,7 +8,7 @@ class LazyBzw:
         self.filename: str = utils.set_filename(filename=filename, overwrite=overwrite)
         self.content: str = ""
 
-    def create(self, typ: str, group: bool = False, **kwargs) -> None:
+    def create(self, typ: str, group: bool = False, **kwargs: Any) -> None:
         if not group:
             self.content += f"{typ}\n"
         else:
@@ -17,7 +19,7 @@ class LazyBzw:
                 self.content += f"{attr.strip('_')} {kwargs[attr]}\n"
 
             elif not any(isinstance(entry, (list, tuple, dict)) for entry in kwargs[attr]):
-                kwargs[attr]: str = utils.deep_type_cast(core=kwargs, part=attr, name=attr)
+                kwargs[attr] = utils.deep_type_cast(core=kwargs, part=attr, name=attr)
                 self.content += f"{attr.strip('_')} {kwargs[attr]}\n"
 
             else:
@@ -27,7 +29,7 @@ class LazyBzw:
 
         self.content += "end\n\n"
 
-    def define(self, name: str = None, end: bool = False) -> None:
+    def define(self, name: str | None = None, end: bool | None = False) -> None:
         if not end:
             self.content += f"define {name}\n\n"
         else:
@@ -45,6 +47,6 @@ class LazyBzw:
         else:
             self.content += f"# {content}\n\n"
 
-    def dump(self):
+    def dump(self) -> None:
         with open(self.filename, "a") as af:
             af.write(self.content)

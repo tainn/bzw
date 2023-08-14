@@ -1,6 +1,8 @@
 # bzw
 
-[![Code style: black](https://img.shields.io/badge/style-black-000000.svg)](https://github.com/psf/black)
+[![black](https://img.shields.io/badge/style-black-222222.svg)](https://github.com/psf/black)
+[![ruff](https://img.shields.io/badge/lint-ruff-222222.svg)](https://github.com/astral-sh/ruff)
+[![mypy](https://img.shields.io/badge/type-mypy-222222.svg)](https://github.com/python/mypy)
 
 A package that allows for simple [bzw](https://wiki.bzflag.org/BZW) object creation and file population.
 
@@ -13,7 +15,7 @@ organized, and allowing the inclusion of logic while building bzw objects.
 Fetch the latest version of the package:
 
 ```sh
-pip3 install --upgrade git+https://github.com/tainn/bzw.git
+python3 -m pip install --upgrade git+https://github.com/tainn/bzw.git
 ```
 
 ## Quick reference
