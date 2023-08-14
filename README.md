@@ -10,7 +10,7 @@ It features no hard restrictions, meaning that any object can be created with an
 does not exist. As such this package is merely an extension to creating maps by hand, making it more compact, better
 organized, and allowing the inclusion of logic while building bzw objects.
 
-### Install
+## Install
 
 Fetch the latest version of the package:
 
@@ -18,7 +18,7 @@ Fetch the latest version of the package:
 python3 -m pip install --upgrade git+https://github.com/tainn/bzw.git
 ```
 
-### Quick reference
+## Quick reference
 
 A hands-on reference of available methods and their usability.
 
@@ -54,7 +54,7 @@ world.comment("Two new lines afterwards", addline=True)
 
 ```
 
-### Eager vs lazy
+## Eager vs lazy
 
 `Bzw` class provides an eager loading approach towards file population, with each bzw object being written into the end
 file as you go. This omits the need to dump the incremental build at the end, as well as persists the built progress in
@@ -74,7 +74,7 @@ world = bzw.LazyBzw("my-map")
 world.dump()
 ```
 
-### Reserved keywords
+## Reserved keywords
 
 When creating objects whose fields are named the same as
 Python's [reserved keywords](https://docs.python.org/3/reference/lexical_analysis.html#keywords), we can add a trailing
@@ -91,7 +91,7 @@ world.create(
 )
 ```
 
-### Logic
+## Logic
 
 By utilizing some form of logic, one line doesn't have to equal just one object creation. The following example creates
 nine different objects under some key.
