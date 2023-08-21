@@ -15,7 +15,7 @@ organized, and allowing the inclusion of logic while building bzw objects.
 Fetch the latest version of the package:
 
 ```console
-python3 -m pip install --upgrade git+https://github.com/tainn/bzw.git
+python3 -m pip install git+https://github.com/tainn/bzw.git@v2.7
 ```
 
 ## Quick reference

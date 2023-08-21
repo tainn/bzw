@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bzw"
-version = "2.6"
+version = "2.7"
 description = "Wrapper for bzw object creation and file population"
 readme = "README.md"
 authors = [{ name = "tainn" }]
