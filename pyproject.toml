@@ -1,3 +1,23 @@
+[build-system]
+requires = ["setuptools>=68.1.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bzw"
+version = "2.6"
+description = "Wrapper for bzw object creation and file population"
+readme = "README.md"
+authors = [{ name = "tainn" }]
+keywords = ["bzw", "bzflag", "map"]
+dependencies = []
+requires-python = ">=3.11"
+
+[project.optional-dependencies]
+dev = ["black", "ruff", "mypy"]
+
+[project.urls]
+Homepage = "https://github.com/tainn/bzw"
+
 [tool.black]
 line-length = 120
 
