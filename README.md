@@ -66,7 +66,7 @@ world.output()
 Since `v3.0`, only the lazy IO approach is supported, in order to ensure a complete end state in case of runtime errors.
 
 This means that the final call of the `dump` method is required to write the in-memory string content to the end file.
-The `output` method can also be called to instead print the creation to stdout instead of writing it to a file.
+The `output` method can also be called to print the creation to stdout instead of writing it to a file.
 
 ```py
 import bzw
