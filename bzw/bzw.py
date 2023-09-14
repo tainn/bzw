@@ -1,52 +1,88 @@
+import os
 from typing import Any
 
-from bzw import utils
+from .exceptions import BadParamTypeError
 
 
 class Bzw:
     def __init__(self, filename: str, overwrite: bool = False) -> None:
-        self.filename: str = utils.set_filename(filename=filename, overwrite=overwrite)
+        self.filename: str = self._set_filename(
+            name=filename,
+            overwrite=overwrite,
+        )
+        self.content: str = ""
 
-    def create(self, typ: str, group: bool = False, **kwargs: Any) -> None:
-        with open(self.filename, "a") as af:
-            if not group:
-                af.write(f"{typ}\n")
-            else:
-                af.write(f"group {typ}\n")
+    @staticmethod
+    def _set_filename(name: str, overwrite: bool = False) -> str:
+        if not name.endswith(".bzw"):
+            name = f"{name}.bzw"
 
-            for attr in kwargs:
-                if isinstance(kwargs[attr], (str, int, float)):
-                    af.write(f"{attr.strip('_')} {kwargs[attr]}\n")
+        name_root: str = name.split(".bzw")[0]
+        true_name: str = name
+        postfix_inc: int = 1
 
-                elif not any(isinstance(entry, (list, tuple, dict)) for entry in kwargs[attr]):
-                    kwargs[attr] = utils.deep_type_cast(core=kwargs, part=attr, name=attr)
-                    af.write(f"{attr.strip('_')} {kwargs[attr]}\n")
+        while True:
+            if not os.path.isfile(true_name):
+                break
 
-                else:
-                    for idx, _ in enumerate(kwargs[attr]):
-                        partial: str = utils.deep_type_cast(core=kwargs[attr], part=idx, name=attr)
-                        af.write(f"{attr.strip('_')} {partial}\n")
+            if overwrite:
+                os.remove(true_name)
+                break
 
-            af.write("end\n\n")
+            two_digit_postfix: str = str(postfix_inc).zfill(2)
+            true_name = f"{name_root}-{two_digit_postfix}.bzw"
+            postfix_inc += 1
 
-    def define(self, name: str | None = None, end: bool | None = False) -> None:
-        with open(self.filename, "a") as af:
-            if not end:
-                af.write(f"define {name}\n\n")
-            else:
-                af.write("enddef\n\n")
+        return true_name
+
+    def create(self, type_: str, group: bool = False, **kwargs: Any) -> None:
+        if group:
+            self.content += f"group "
+
+        self.content += type_
+        self.emptyline(1)
+
+        for key_ in kwargs:
+            if not isinstance(kwargs[key_], (str, int, float, list, tuple)):
+                raise BadParamTypeError(type(kwargs[key_]))
+
+            reduced_param: Any = kwargs[key_]
+
+            if isinstance(kwargs[key_], (list, tuple)):
+                reduced_param = " ".join(map(str, kwargs[key_]))
+
+            self.indent(2)
+            self.content += f"{key_.strip('_')} {reduced_param}"
+            self.emptyline(1)
+
+        self.content += "end"
+        self.emptyline(2)
+
+    def define(self, name: str = "", end: bool = False) -> None:
+        if not end:
+            self.content += f"define {name}"
+        else:
+            self.content += "enddef"
+
+        self.emptyline(2)
 
     def include(self, path: str) -> None:
-        with open(self.filename, "a") as af:
-            af.write(f"include {path}\n\n")
+        self.content += f"include {path}"
+        self.emptyline(2)
+
+    def comment(self, content: str) -> None:
+        self.content += f"# {content}"
+        self.emptyline(1)
+
+    def indent(self, amount: int = 1) -> None:
+        self.content += " " * amount
 
     def emptyline(self, amount: int = 1) -> None:
-        with open(self.filename, "a") as af:
-            af.write("\n" * amount)
+        self.content += "\n" * amount
 
-    def comment(self, content: str, addline: bool = False) -> None:
+    def dump(self) -> None:
         with open(self.filename, "a") as af:
-            if not addline:
-                af.write(f"# {content}\n")
-            else:
-                af.write(f"# {content}\n\n")
+            af.write(self.content.strip())
+
+    def output(self) -> None:
+        print(self.content.strip())

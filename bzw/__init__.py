@@ -1,4 +1,7 @@
 from .bzw import Bzw
-from .lazybzw import LazyBzw
+from .exceptions import BadParamTypeError
 
-__all__ = ["Bzw", "LazyBzw"]
+__all__ = [
+    "Bzw",
+    "BadParamTypeError",
+]

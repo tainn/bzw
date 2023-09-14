@@ -31,6 +31,7 @@ known-first-party = ["src"]
 
 [tool.mypy]
 strict = true
+exclude = ["build"]
 
 [[tool.mypy.overrides]]
 module = ["setuptools"]

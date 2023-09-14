@@ -23,54 +23,59 @@ python3 -m pip install git+https://github.com/tainn/bzw.git@v2.7
 A hands-on reference of available methods and their usability.
 
 ```py
-import bzw
+from bzw import Bzw
 
-# Instantiation :: Bzw, LazyBzw
-world = bzw.Bzw("my-map")
+# Instantiate :: Bzw
+world = Bzw("my-map")
 
-# Object creation :: create
+# Create objects :: create
 world.create(
     "meshbox",
     position=(0, 0, 20),
     rotation=45,
     size=(10, 10, 10),
-    color=(0.2, 0.2, 0.2, 0.9)
+    color=(0.2, 0.2, 0.2, 0.9),
 )
 
-# Group definitions :: define
+# Define groups :: define
 world.define("tower")
-world.create("...")
+world.create(...)
 world.define(end=True)
 
-# Include :: include
+# Include files :: include
 world.include("/path/to/file.bzw")
 
-# Empty lines :: emptyline
+# Add comments :: comment
+world.comment("This is a comment")
+
+# Indent with spaces :: indent
+world.indent(2)
+
+# Add empty lines :: emptyline
 world.emptyline(2)
 
-# Comments :: comment
-world.comment("This is a comment")
-world.comment("Two new lines afterwards", addline=True)
+# Dump to file :: dump
+world.dump()
 
+# Output to stdout :: output
+world.output()
 ```
 
-## Eager vs lazy
+## Dump and output
 
-`Bzw` class provides an eager loading approach towards file population, with each bzw object being written into the end
-file as you go. This omits the need to dump the incremental build at the end, as well as persists the built progress in
-case of a runtime error. The trade-off is slightly worse performance due to repeating IO operations.
+Since `v3.0`, only the lazy IO approach is supported, in order to ensure a complete end state in case of runtime errors.
 
-`LazyBzw` functions similarly to `Bzw`, but with lazy loading instead of eager loading. Additionally, it requires a
-dump of the in-memory string content to perform a single write operation, usually at the very end.
+This means that the final call of the `dump` method is required to write the in-memory string content to the end file.
+The `output` method can also be called to instead print the creation to stdout instead of writing it to a file.
 
 ```py
 import bzw
 
-# Eager
 world = bzw.Bzw("my-map")
 
-# Lazy
-world = bzw.LazyBzw("my-map")
+...
+
+world.output()
 world.dump()
 ```
 
@@ -87,7 +92,7 @@ leading and trailing underscores will be ignored in a similar fashion.
 world.create(
     "link",
     from_="east:f",
-    to="west:b"
+    to="west:b",
 )
 ```
 
@@ -102,6 +107,6 @@ for i in range(-4, 5):
         "meshbox",
         position=(i * 40, i * 40, 0),
         rotation=i * 10,
-        size=(10, 10, 10 * abs(i) + 10)
+        size=(10, 10, 10 * abs(i) + 10),
     )
 ```
