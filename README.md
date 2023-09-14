@@ -25,10 +25,10 @@ A hands-on reference of available methods and their usability.
 ```py
 from bzw import Bzw
 
-# Instantiate :: Bzw
+# Instantiate
 world = Bzw("my-map")
 
-# Create objects :: create
+# Create objects
 world.create(
     "meshbox",
     position=(0, 0, 20),
@@ -37,27 +37,27 @@ world.create(
     color=(0.2, 0.2, 0.2, 0.9),
 )
 
-# Define groups :: define
+# Define groups
 world.define("tower")
 world.create(...)
 world.define(end=True)
 
-# Include files :: include
+# Include files
 world.include("/path/to/file.bzw")
 
-# Add comments :: comment
+# Add comments
 world.comment("This is a comment")
 
-# Indent with spaces :: indent
+# Indent with spaces
 world.indent(2)
 
-# Add empty lines :: emptyline
+# Add empty lines
 world.emptyline(2)
 
-# Dump to file :: dump
+# Dump to file
 world.dump()
 
-# Output to stdout :: output
+# Output to stdout
 world.output()
 ```
 
