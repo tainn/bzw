@@ -69,9 +69,9 @@ This means that the final call of the `dump` method is required to write the in-
 The `output` method can also be called to print the creation to stdout instead of writing it to a file.
 
 ```py
-import bzw
+from bzw import Bzw
 
-world = bzw.Bzw("my-map")
+world = Bzw("my-map")
 
 ...
 
