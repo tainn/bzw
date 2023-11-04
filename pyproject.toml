@@ -10,24 +10,32 @@ readme = "README.md"
 authors = [{ name = "tainn" }]
 keywords = ["bzw", "bzflag", "map"]
 dependencies = []
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 
 [project.optional-dependencies]
-dev = ["black", "ruff", "mypy"]
+dev = ["ruff", "mypy"]
 
 [project.urls]
-Homepage = "https://github.com/tainn/bzw"
-
-[tool.black]
-line-length = 120
+homepage = "https://github.com/tainn/bzw"
 
 [tool.ruff]
+fix = true
+indent-width = 4
 line-length = 120
 src = ["src"]
-select = ["I001", "F401"]
+select = [
+    "I001",
+    "F401"
+]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-first-party = ["src"]
+
+[tool.ruff.format]
+indent-style = "space"
+line-ending = "lf"
+quote-style = "double"
+skip-magic-trailing-comma = false
 
 [tool.mypy]
 strict = true
