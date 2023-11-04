@@ -22,14 +22,14 @@ homepage = "https://github.com/tainn/bzw"
 fix = true
 indent-width = 4
 line-length = 120
-src = ["src"]
+src = ["bzw"]
 select = [
     "I001",
     "F401"
 ]
 
 [tool.ruff.lint.isort]
-known-first-party = ["src"]
+known-first-party = ["bzw"]
 
 [tool.ruff.format]
 indent-style = "space"
