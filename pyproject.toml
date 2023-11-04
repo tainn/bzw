@@ -8,7 +8,7 @@ version = "0.3.1"
 description = "Wrapper for bzw object creation and file population"
 readme = "README.md"
 authors = [{ name = "tainn" }]
-keywords = ["bzw", "bzflag", "map"]
+keywords = ["package", "map", "bzflag"]
 dependencies = []
 requires-python = ">=3.11"
 
