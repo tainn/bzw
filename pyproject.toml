@@ -1,16 +1,12 @@
 [build-system]
-requires = ["setuptools>=68.1.0", "wheel"]
+requires = ["setuptools>=69.0.3", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "bzw"
 version = "0.3.1"
-description = "Wrapper for bzw object creation and file population"
-readme = "README.md"
-authors = [{ name = "tainn" }]
-keywords = ["package", "map", "bzflag"]
+readme = "readme.md"
 dependencies = []
-requires-python = ">=3.11"
 
 [project.optional-dependencies]
 dev = ["ruff", "mypy"]
@@ -23,6 +19,8 @@ fix = true
 indent-width = 4
 line-length = 120
 src = ["bzw"]
+
+[tool.ruff.lint]
 select = [
     "I001",
     "F401"
@@ -39,7 +37,11 @@ skip-magic-trailing-comma = false
 
 [tool.mypy]
 strict = true
-exclude = ["build"]
+disable_error_code = [
+    "no-any-return",
+    "func-returns-value"
+]
+exclude = ["venv", "build"]
 
 [[tool.mypy.overrides]]
 module = ["setuptools"]
