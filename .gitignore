@@ -1,7 +1,11 @@
 # dev
 .idea
+*.iml
 venv
+.venv
 .ruff_cache
 .mypy_cache
+
+# source
 build
 *.egg-info
