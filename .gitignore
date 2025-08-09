@@ -1,10 +1,10 @@
-# dev
+# ide
 .idea
 *.iml
-venv
+
+# astral
 .venv
 .ruff_cache
-.mypy_cache
 
 # source
 build

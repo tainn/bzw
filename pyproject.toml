@@ -1,18 +1,12 @@
 [build-system]
-requires = ["setuptools>=69.0.3", "wheel"]
+requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "bzw"
-version = "0.3.2"
-readme = "readme.md"
+version = "0.3.3"
+requires-python = ">=3.13"
 dependencies = []
-
-[project.optional-dependencies]
-dev = ["ruff", "mypy"]
-
-[project.urls]
-homepage = "https://github.com/tainn/bzw"
 
 [tool.ruff]
 fix = true
@@ -22,27 +16,33 @@ src = ["bzw"]
 
 [tool.ruff.lint]
 select = [
-    "I001",
-    "F401"
+  "F",
+  "E",
+  "W",
+  "I",
+  "N",
+  "UP",
+  "ANN",
+  "B",
+  "A",
+  "ICN",
+  "PIE",
+  "Q",
+  "RSE",
+  "RET",
+  "SIM",
+  "ARG",
+  "PTH",
 ]
+ignore = ["ANN401"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["bzw"]
 
 [tool.ruff.format]
+preview = true
 indent-style = "space"
 line-ending = "lf"
 quote-style = "double"
 skip-magic-trailing-comma = false
-
-[tool.mypy]
-strict = true
-disable_error_code = [
-    "no-any-return",
-    "func-returns-value"
-]
-exclude = ["venv", "build"]
-
-[[tool.mypy.overrides]]
-module = ["setuptools"]
-ignore_missing_imports = true
+docstring-code-format = true

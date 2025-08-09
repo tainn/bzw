@@ -1,22 +1,18 @@
 # bzw
 
-a package that allows for simple [bzw](https://wiki.bzflag.org/BZW) object creation and file population
-
-it features no hard restrictions, meaning that any object can be created with any attribute, even if the object itself
-does not exist. as such this package is merely an extension to creating maps by hand, making it more compact, better
-organized, and allowing the inclusion of logic while building bzw objects
+[bzw](https://wiki.bzflag.org/BZW) object creation and file population
 
 ## install
 
-fetch the latest version of the package:
+fetch the package via [uv](https://docs.astral.sh/uv)
 
 ```console
-python3 -m pip install git+https://github.com/tainn/bzw.git@0.3.2
+uv pip install git+https://github.com/tainn/bzw.git@0.3.3
 ```
 
 ## quick reference
 
-a hands-on reference of available methods and their usability:
+a hands-on reference of available methods and their usability
 
 ```py
 from bzw import Bzw
@@ -42,7 +38,7 @@ world.define(end=True)
 world.include("/path/to/file.bzw")
 
 # add comments
-world.comment("This is a comment")
+world.comment("this is a comment")
 
 # indent with spaces
 world.indent(2)
@@ -59,11 +55,8 @@ world.output()
 
 ## dump and output
 
-since [`v3.0`](https://github.com/tainn/bzw/tree/v3.0), only the lazy io approach is supported, in order to ensure a
-complete end state in case of runtime errors
-
-this means that the final call of the `dump` method is required to write the in-memory string content to the end file.
-the `output` method can also be called to print the creation to stdout instead of writing it to a file
+- a final call of the `dump()` method is required to write the in-memory string content to the end file
+- the `output()` method can also be called to print the creation to stdout instead of writing it to a file
 
 ```py
 from bzw import Bzw
@@ -96,14 +89,14 @@ world.create(
 ## logic
 
 by utilizing some form of logic, one line doesn't have to equal just one object creation. the following example creates
-nine different objects under some key:
+nine different objects under some key
 
 ```py
-for i in range(-4, 5):
+for idx in range(-4, 5):
     world.create(
         "meshbox",
-        position=(i * 40, i * 40, 0),
-        rotation=i * 10,
-        size=(10, 10, 10 * abs(i) + 10),
+        position=(idx * 40, idx * 40, 0),
+        rotation=idx * 10,
+        size=(10, 10, 10 * abs(idx) + 10),
     )
 ```

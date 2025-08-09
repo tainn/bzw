@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 from typing import Any
 
 from .exceptions import BadParamTypeError
@@ -6,30 +6,30 @@ from .exceptions import BadParamTypeError
 
 class Bzw:
     def __init__(self, filename: str, overwrite: bool = False) -> None:
-        self.filename: str = self._set_filename(
+        self.filename = self._set_filename(
             name=filename,
             overwrite=overwrite,
         )
-        self.content: str = ""
+        self.content = ""
 
     @staticmethod
     def _set_filename(name: str, overwrite: bool = False) -> str:
         if not name.endswith(".bzw"):
             name = f"{name}.bzw"
 
-        name_root: str = name.split(".bzw")[0]
-        true_name: str = name
-        postfix_inc: int = 1
+        name_root = name.split(".bzw")[0]
+        true_name = name
+        postfix_inc = 1
 
         while True:
-            if not os.path.isfile(true_name):
+            if not Path(true_name).is_file():
                 break
 
             if overwrite:
-                os.remove(true_name)
+                Path(true_name).unlink()
                 break
 
-            two_digit_postfix: str = str(postfix_inc).zfill(2)
+            two_digit_postfix = str(postfix_inc).zfill(2)
             true_name = f"{name_root}-{two_digit_postfix}.bzw"
             postfix_inc += 1
 
@@ -37,18 +37,18 @@ class Bzw:
 
     def create(self, type_: str, group: bool = False, **kwargs: Any) -> None:
         if group:
-            self.content += f"group "
+            self.content += "group "
 
         self.content += type_
         self.emptyline(1)
 
         for key_ in kwargs:
-            if not isinstance(kwargs[key_], (str, int, float, list, tuple)):
+            if not isinstance(kwargs[key_], str | int | float | list | tuple):
                 raise BadParamTypeError(type(kwargs[key_]))
 
             reduced_param: Any = kwargs[key_]
 
-            if isinstance(kwargs[key_], (list, tuple)):
+            if isinstance(kwargs[key_], list | tuple):
                 reduced_param = " ".join(map(str, kwargs[key_]))
 
             self.indent(2)
@@ -81,7 +81,7 @@ class Bzw:
         self.content += "\n" * amount
 
     def dump(self) -> None:
-        with open(self.filename, "a") as af:
+        with Path(self.filename).open("a") as af:
             af.write(self.content.strip())
 
     def output(self) -> None:
