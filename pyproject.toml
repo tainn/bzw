@@ -32,7 +32,7 @@ select = [
   "RET",
   "SIM",
   "ARG",
-  "PTH",
+  "PTH"
 ]
 ignore = ["ANN401"]
 
