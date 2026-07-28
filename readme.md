@@ -7,7 +7,7 @@
 Fetch the package via [uv](https://docs.astral.sh/uv)
 
 ```sh
-uv pip install git+https://github.com/tainn/bzw.git@0.3.3
+uv pip install git+https://github.com/tainn/bzw.git@0.3.4
 ```
 
 ## Reference
