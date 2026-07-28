@@ -5,6 +5,7 @@
 # astral
 .venv
 .ruff_cache
+uv.lock
 
 # source
 build
