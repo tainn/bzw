@@ -55,8 +55,8 @@ world.output()
 
 ## Dump and output
 
-- A final call of the `dump()` method is required to write the in-memory string content to the end file
-- The `output()` method can also be called to print the creation to stdout instead of writing it to a file
+- a final call of the `dump()` method is required to write the in-memory string content to the end file
+- the `output()` method can also be called to print the creation to stdout instead of writing it to a file
 
 ```py
 from bzw import Bzw
